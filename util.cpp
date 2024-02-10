@@ -5,6 +5,7 @@
 #include "util.h"
 
 using namespace std;
+
 std::string convToLower(std::string src)
 {
     std::transform(src.begin(), src.end(), src.begin(), ::tolower);
@@ -15,16 +16,18 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
-
-
-
-
-
-
-
-
-
-
+    std::set<std::string> keywords;
+    std::string buffer;
+    for(char c : rawWords) {
+        if(isalnum(c)) {
+            buffer += tolower(c);
+        } else if(!buffer.empty()) {
+            if(buffer.length() > 1) keywords.insert(buffer);
+            buffer.clear();
+        }
+    }
+    if(buffer.length() > 1) keywords.insert(buffer);
+    return keywords;
 }
 
 /**************************************************

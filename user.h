@@ -24,3 +24,4 @@ private:
     int type_;
 };
 #endif
+
